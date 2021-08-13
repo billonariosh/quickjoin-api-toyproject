@@ -5,19 +5,25 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     #    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    url: jdbc:mysql://127.0.0.1:3306/quickjoin?serverTimezone=UTC&useSSL=true&requireSSL=false
-    username:
-    password:
+    url: jdbc:mysql://billo.iptime.org:10002/quickjoin?serverTimezone=UTC&useSSL=true&requireSSL=false
+    username: billo
+    password: Tmdals2!
     hikari:
       pool-name: hikari-cp
       maximum-pool-size: 10
       minimum-idle: 1
       connection-timeout: 3000
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
 
 jpa:
   database-platform: org.hibernate.dialect.H2Dialect
   hibernate:
-    ddl-auto: create-drop
+    ddl-auto: create
   properties:
     hibernate:
       format_sql: true
@@ -45,3 +51,8 @@ security:
           token-uri: https://kauth.kakao.com/oauth/token
           user-info-uri: https://kapi.kakao.com/v2/user/me
           user-name-attribute: id
+
+
+jwt:
+  secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJzdWIiOiIwMTA0MDA4Mjg4MiIsIm5hbWUiOiJjaG9zZXVuZ2hlZSIsImlhdCI6MTYyODg2NjgwMH0Sx241i49LSY6wUTxMjXIIaiDiIIROSNM9nipjPld86M
+  token-validity-in-seconds: 86400 #토큰의 만료시간을 지정함.
