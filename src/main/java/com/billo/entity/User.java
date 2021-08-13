@@ -38,6 +38,12 @@ public class User {
    @Column(name = "activated")
    private boolean activated;
 
+   @Embedded
+   @AttributeOverrides({
+           @AttributeOverride(name = "street", column = @Column(name = "home_street"))
+   })
+   private Address address;
+
    @ManyToMany
    @JoinTable(
       name = "user_authority",

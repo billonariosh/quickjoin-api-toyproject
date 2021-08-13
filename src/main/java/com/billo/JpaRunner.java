@@ -1,5 +1,6 @@
 package com.billo;
 
+import com.billo.entity.Address;
 import com.billo.entity.User;
 import org.hibernate.Session;
 import org.springframework.boot.ApplicationArguments;
@@ -20,12 +21,15 @@ public class JpaRunner implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		User user = new User();
+		Address address = new Address();
+
 		user.setUsername("홍길동");
 		user.setNickname("닉네임");
 		user.setPassword("pwd");
 		user.setActivated(true);
 
 		Session session = entityManager.unwrap(Session.class);
+		session.save(address);
 		session.save(user);
 	}
 
