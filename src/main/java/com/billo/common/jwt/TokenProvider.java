@@ -1,4 +1,4 @@
-package com.billo.jwt;
+package com.billo.common.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;

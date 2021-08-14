@@ -1,4 +1,4 @@
-package com.billo;
+package com.billo.quickjoin;
 
 import com.billo.entity.Address;
 import com.billo.entity.User;
@@ -20,8 +20,7 @@ public class JpaRunner implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		User user = new User();
-		Address address = new Address();
+		/*User user = new User();
 
 		user.setUsername("홍길동");
 		user.setNickname("닉네임");
@@ -29,8 +28,8 @@ public class JpaRunner implements ApplicationRunner {
 		user.setActivated(true);
 
 		Session session = entityManager.unwrap(Session.class);
-		session.save(address);
-		session.save(user);
+
+		session.save(user);*/
 	}
 
 }

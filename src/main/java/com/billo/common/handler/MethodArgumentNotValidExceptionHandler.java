@@ -1,4 +1,4 @@
-package com.billo.handler;
+package com.billo.common.handler;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;

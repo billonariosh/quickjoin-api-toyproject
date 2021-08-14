@@ -1,4 +1,4 @@
-package com.billo.jwt;
+package com.billo.common.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

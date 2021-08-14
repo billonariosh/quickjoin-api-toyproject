@@ -1,10 +1,10 @@
-package com.billo.service;
+package com.billo.common.service;
 
 import com.billo.dto.UserDto;
 import com.billo.entity.Authority;
 import com.billo.entity.User;
 import com.billo.repository.UserRepository;
-import com.billo.util.SecurityUtil;
+import com.billo.common.util.SecurityUtil;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -2,8 +2,8 @@ package com.billo.controller;
 
 import com.billo.dto.LoginDto;
 import com.billo.dto.TokenDto;
-import com.billo.jwt.JwtFilter;
-import com.billo.jwt.TokenProvider;
+import com.billo.common.jwt.JwtFilter;
+import com.billo.common.jwt.TokenProvider;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.billo.jwt;
+package com.billo.common.jwt;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

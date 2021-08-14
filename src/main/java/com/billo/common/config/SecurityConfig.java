@@ -1,9 +1,9 @@
-package com.billo.config;
+package com.billo.common.config;
 
-import com.billo.jwt.JwtSecurityConfig;
-import com.billo.jwt.JwtAccessDeniedHandler;
-import com.billo.jwt.JwtAuthenticationEntryPoint;
-import com.billo.jwt.TokenProvider;
+import com.billo.common.jwt.JwtSecurityConfig;
+import com.billo.common.jwt.JwtAccessDeniedHandler;
+import com.billo.common.jwt.JwtAuthenticationEntryPoint;
+import com.billo.common.jwt.TokenProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,6 +14,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.firewall.DefaultHttpFirewall;
+import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.web.filter.CorsFilter;
 
 @EnableWebSecurity
@@ -48,7 +50,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/h2-console/**"
                         ,"/favicon.ico"
                         ,"/error"
-                );
+                        ,"/swagger-ui/**"
+                        ,"/swagger-resources/**"
+                        ,"/v3/api-docs"
+                        ,"/v2/api-docs"
+
+                )
+            .and().httpFirewall(defaultHttpFirewall());
     }
 
     @Override
@@ -85,4 +93,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .apply(new JwtSecurityConfig(tokenProvider));
     }
+
+    @Bean
+    public HttpFirewall defaultHttpFirewall() {
+        return new DefaultHttpFirewall();
+    }
+
 }
