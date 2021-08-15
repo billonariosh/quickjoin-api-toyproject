@@ -30,7 +30,7 @@ public class UserService {
 
         //빌더 패턴의 장점
         Authority authority = Authority.builder()
-                .authorityName("ROLE_USER")
+                .authorityname("ROLE_USER")
                 .build();
 
         User user = User.builder()
@@ -38,7 +38,7 @@ public class UserService {
                 .password(passwordEncoder.encode(userDto.getPassword()))
                 .nickname(userDto.getNickname())
                 .authorities(Collections.singleton(authority))
-                .activated(true)
+                .useyn(true)
                 .build();
 
         return userRepository.save(user);

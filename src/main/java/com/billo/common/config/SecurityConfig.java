@@ -45,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring()
+        web
+            .ignoring()
                 .antMatchers(
                         "/h2-console/**"
                         ,"/favicon.ico"
@@ -54,9 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         ,"/swagger-resources/**"
                         ,"/v3/api-docs"
                         ,"/v2/api-docs"
-
+                        ,"/webjars/**"
                 )
-            .and().httpFirewall(defaultHttpFirewall());
+            .and()
+                .httpFirewall(defaultHttpFirewall());
     }
 
     @Override

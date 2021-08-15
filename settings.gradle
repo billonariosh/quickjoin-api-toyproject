@@ -12,4 +12,4 @@ pluginManagement {
 		}
 	}
 }
-rootProject.name = 'quickjoin'
+rootProject.name = 'quickjoin-api'

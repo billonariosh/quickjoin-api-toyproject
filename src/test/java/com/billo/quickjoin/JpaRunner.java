@@ -1,8 +1,5 @@
 package com.billo.quickjoin;
 
-import com.billo.entity.Address;
-import com.billo.entity.User;
-import org.hibernate.Session;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;

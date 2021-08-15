@@ -2,14 +2,10 @@ package com.billo.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "authority")
+@Table(name = "tblauthority")
 @Getter
 @Setter
 @Builder
@@ -18,6 +14,13 @@ import javax.validation.constraints.NotNull;
 public class Authority {
 
    @Id
-   @Column(name = "authority_name", length = 50)
-   private String authorityName;
+   @Column(name = "authorityno", length = 50, unique = true)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Long authorityno;
+
+   @Column(name = "userno", length = 50)
+   private Long userno;
+
+   @Column(name = "authorityname", length = 50)
+   private String authorityname;
 }

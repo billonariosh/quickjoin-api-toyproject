@@ -4,13 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.HashSet;
+import java.security.Timestamp;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "tbluser")
 @Getter
 @Setter
 @Builder
@@ -20,9 +18,12 @@ public class User {
 
    @JsonIgnore
    @Id
-   @Column(name = "user_id")
+   @Column(name = "userno", length = 50, unique = true)
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long userId;
+   private Long userno;
+
+   @Column(name = "userid", length = 50, unique = true)
+   private String userid;
 
    @Column(name = "username", length = 50, unique = true)
    private String username;
@@ -34,20 +35,37 @@ public class User {
    @Column(name = "nickname", length = 50)
    private String nickname;
 
-   @JsonIgnore
-   @Column(name = "activated")
-   private boolean activated;
+   @Column(name = "phone", length = 50)
+   private String phone;
 
-   @Embedded
-   @AttributeOverrides({
-           @AttributeOverride(name = "street", column = @Column(name = "home_street"))
-   })
-   private Address address;
+   @Column(name = "email", length = 50)
+   private String email;
+
+   @Column(name = "zipcode", length = 50)
+   private String zipcode;
+
+   @Column(name = "mainaddress", length = 50)
+   private String mainaddress;
+
+   @Column(name = "subaddress", length = 50)
+   private String subaddress;
+
+   @Column(name = "useyn", length = 50)
+   private boolean useyn;
+
+   @Column(name = "regdate", length = 50)
+   private Timestamp regdate;
+
+   @Column(name = "chagedate", length = 50)
+   private Timestamp chagedate;
+
+   @Column(name = "logindate", length = 50)
+   private Timestamp logindate;
 
    @ManyToMany
    @JoinTable(
-      name = "user_authority",
-      joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "user_id")},
-      inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "authority_name")})
+           name = "tblauthority",
+           joinColumns = {@JoinColumn(name = "userno", referencedColumnName = "userno")},
+           inverseJoinColumns = {@JoinColumn(name = "authorityname", referencedColumnName = "authorityname")})
    private Set<Authority> authorities;
 }
