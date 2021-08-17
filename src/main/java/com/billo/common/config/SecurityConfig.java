@@ -4,6 +4,9 @@ import com.billo.common.jwt.JwtSecurityConfig;
 import com.billo.common.jwt.JwtAccessDeniedHandler;
 import com.billo.common.jwt.JwtAuthenticationEntryPoint;
 import com.billo.common.jwt.TokenProvider;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,6 +24,8 @@ import org.springframework.web.filter.CorsFilter;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private static Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+
     private final TokenProvider tokenProvider;
     private final CorsFilter corsFilter;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;

@@ -5,9 +5,8 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    #    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    url: jdbc:mysql://billo.iptime.org:10002/quickjoin?serverTimezone=UTC&useSSL=true&requireSSL=false
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mysql://billo.iptime.org:10002/quickjoin?serverTimezone=UTC&useSSL=true&requireSSL=false
     username: billo
     password: Tmdals2!
     hikari:
