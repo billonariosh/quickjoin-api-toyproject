@@ -20,7 +20,7 @@ public class User {
    @Id
    @Column(name = "userno", length = 50, unique = true)
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long userno;
+   private int userno;
 
    @Column(name = "userid", length = 50, unique = true)
    private String userid;
@@ -51,16 +51,16 @@ public class User {
    private String subaddress;
 
    @Column(name = "useyn", length = 50)
-   private boolean useyn;
+   private String useyn;
 
    @Column(name = "regdate", length = 50)
-   private Timestamp regdate;
+   private String regdate;
 
    @Column(name = "chagedate", length = 50)
-   private Timestamp chagedate;
+   private String chagedate;
 
    @Column(name = "logindate", length = 50)
-   private Timestamp logindate;
+   private String logindate;
 
    @ManyToMany
    @JoinTable(

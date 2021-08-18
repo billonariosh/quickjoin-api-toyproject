@@ -1,10 +1,13 @@
-package com.billo.common.service;
+package com.billo.service;
 
+import com.billo.common.config.SecurityConfig;
 import com.billo.dto.UserDto;
 import com.billo.entity.Authority;
 import com.billo.entity.User;
 import com.billo.repository.UserRepository;
 import com.billo.common.util.SecurityUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +17,8 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+    private static Logger logger = LoggerFactory.getLogger(UserService.class);
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -24,6 +29,8 @@ public class UserService {
 
     @Transactional
     public User signup(UserDto userDto) {
+        logger.info("userDto:{}", userDto);
+
         if (userRepository.findOneWithAuthoritiesByUsername(userDto.getUsername()).orElse(null) != null) {
             throw new RuntimeException("이미 가입되어 있는 유저입니다.");
         }
@@ -34,11 +41,16 @@ public class UserService {
                 .build();
 
         User user = User.builder()
+                .userno(userDto.getUserno())
+                .userid(userDto.getUserid())
                 .username(userDto.getUsername())
                 .password(passwordEncoder.encode(userDto.getPassword()))
                 .nickname(userDto.getNickname())
+                .regdate("2021-08-18")
+                .chagedate(null)
+                .logindate("2021-08-18")
                 .authorities(Collections.singleton(authority))
-                .useyn(true)
+                .useyn(userDto.getUseyn())
                 .build();
 
         return userRepository.save(user);

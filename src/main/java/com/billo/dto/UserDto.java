@@ -18,7 +18,7 @@ public class UserDto {
 
    @NotNull
    @Size(min = 3, max = 50)
-   private Long userno;
+   private int userno;
 
    @NotNull
    @Size(min = 3, max = 50)
@@ -37,19 +37,15 @@ public class UserDto {
    @Size(min = 3, max = 50)
    private String nickname;
 
-   @NotNull
    @Size(min = 3, max = 50)
    private String phone;
 
-   @NotNull
    @Size(min = 3, max = 50)
    private String email;
-
-   @NotNull
+   
    @Size(min = 3, max = 50)
    private String zipcode;
 
-   @NotNull
    @Size(min = 3, max = 50)
    private String mainaddress;
 
@@ -58,17 +54,17 @@ public class UserDto {
 
    @NotNull
    @Size(min = 3, max = 50)
-   private boolean useyn;
+   private String useyn;
 
    @NotNull
    @Size(min = 3, max = 50)
-   private Timestamp regdate;
+   private String regdate;
 
    @NotNull
    @Size(min = 3, max = 50)
-   private Timestamp chagedate;
+   private String chagedate;
 
    @NotNull
    @Size(min = 3, max = 50)
-   private Timestamp logindate;
+   private String logindate;
 }

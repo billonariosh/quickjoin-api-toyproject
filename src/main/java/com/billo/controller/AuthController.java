@@ -1,9 +1,12 @@
 package com.billo.controller;
 
+import com.billo.common.config.SecurityConfig;
 import com.billo.dto.LoginDto;
 import com.billo.dto.TokenDto;
 import com.billo.common.jwt.JwtFilter;
 import com.billo.common.jwt.TokenProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +24,8 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api")
 public class AuthController {
+    private static Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
@@ -31,9 +36,10 @@ public class AuthController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<TokenDto> authorize(@Valid @RequestBody LoginDto loginDto) {
+        logger.info("loginDto:{},{}", loginDto.getPassword(), loginDto.getUserid());
 
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
+                new UsernamePasswordAuthenticationToken(loginDto.getUserid(), loginDto.getPassword());
 
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
